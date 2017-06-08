@@ -28,7 +28,7 @@ def create_word_bank():
 
 
 def get_starter_letters():
-    # Randomly picks a Trump tweet and takes the starting two words from it to start building the chain.
+    # Randomly picks a tweet and takes the starting two words from it to start building the chain.
     url = "https://drive.google.com/uc?id=0B8xDokak7DY3S3p0RUppZUNRTWs"
     starter_pickle = requests.get(url).content
     print("Downloaded starter words...")
@@ -83,7 +83,7 @@ class TweetBuilder(object):
             return out_string
 
         def create_markov():
-            # Uses a Markov chain to create a tweet imitating Donald Trump
+            # Uses a Markov chain to create a tweet imitating them
             # Returns the tweet in a string
 
             def create_p_values(numbers):
@@ -107,7 +107,7 @@ class TweetBuilder(object):
 
             word_bank = create_word_bank()
 
-            # Starts the tweet by adding the first few characters of an actual @realDonaldTrump tweet
+            # Starts the tweet by adding the first few characters of an actual tweet
             chain = get_starter_letters()
 
             # Converts the fledgling chain into a string so that the length of the output can be checked
@@ -266,8 +266,8 @@ class Bot(object):
             api.update_status(string_to_tweet)
 
 
-# The db file that contains all of Trump's tweets
-archiveFileName = 'TrumpTweets.db'
+# The db file that contains all of their tweets
+archiveFileName = 'MayTweets.db'
 
 # The number of letters that will be used to build the chain
 numberOfWordsUsed = 2
@@ -276,10 +276,10 @@ numberOfWordsUsed = 2
 tweetBuilder = TweetBuilder(n=numberOfWordsUsed)
 
 # Creates the object that interfaces with Twitter
-donaldTrumBot = Bot(tweet_builder=tweetBuilder, minutes_between_reply_checks=10,
+TheresaMayish = Bot(tweet_builder=tweetBuilder, minutes_between_reply_checks=10,
                     number_of_times_to_tweet_per_day=3)
 
 # This runs through all the functions the bot should do and things it should check
-donaldTrumBot.wake_up()
+TheresaMayish.wake_up()
 
 print('Going back to sleep...')
