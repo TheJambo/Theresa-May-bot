@@ -6,7 +6,7 @@ import tweepy
 import pickle
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-
+#! TODO Update Keys
 auth = tweepy.OAuthHandler(consumer_key='F5kphzVfDT5Y5taE467x8dDzX',
                            consumer_secret='5dleu5PeeQ8RXziaOflaXA6jVmGScZNpMvQ7qdrXF29z8l7UbQ')
 auth.set_access_token(key='797971904258772996-42sBRXzXu6o4o7lquisdw3RsZ3uoJ3l',
@@ -43,7 +43,7 @@ class Source(object):
                 all_tweets = []
 
                 # make initial request for most recent tweets (200 is the maximum allowed count)
-                recent_tweets = api.user_timeline(screen_name='@realDonaldTrump', count=200, since_id=newest_id)
+                recent_tweets = api.user_timeline(screen_name='@theresa_may', count=200, since_id=newest_id)
 
                 # save most recent tweets
                 all_tweets.extend(recent_tweets)
@@ -54,7 +54,7 @@ class Source(object):
                 # keep grabbing tweets until there are no tweets left to grab
                 while len(recent_tweets) > 0:
                     # all subsequent requests use the max_id param to prevent duplicates
-                    recent_tweets = api.user_timeline(screen_name='@realDonaldTrump', count=200, max_id=oldest_id,
+                    recent_tweets = api.user_timeline(screen_name='@theresa_may', count=200, max_id=oldest_id,
                                                       since_id=newest_id)
 
                     # save most recent tweets
@@ -70,7 +70,7 @@ class Source(object):
             highest_id = cursor.fetchone()[0]
 
             # If the last tweet in the archive isn't the last thing tweeted, download all new tweets
-            last_tweet_id = int(api.user_timeline(screen_name='@realDonaldTrump', count=200)[0].id_str)
+            last_tweet_id = int(api.user_timeline(screen_name='@theresa_may', count=200)[0].id_str)
 
             if highest_id < last_tweet_id:
 
@@ -180,7 +180,7 @@ class Source(object):
 
 
 # The db file that contains all of Trump's tweets
-archiveFileName = 'TrumpTweets.db'
+archiveFileName = 'MayTweets.db'
 
 # The number of letters that will be used to build the chain
 numberOfWordsUsed = 2
