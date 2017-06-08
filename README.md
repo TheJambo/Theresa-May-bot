@@ -1,2 +1,2 @@
-# donald-trump-bot
-Twitter bot that uses The Donald's Twitter account  to create Markov chains that imitate him.
+# Theresa-May-bot
+Twitter bot that uses Theresa May's Twitter account to create Markov chains that imitate her.
