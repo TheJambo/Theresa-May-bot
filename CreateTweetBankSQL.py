@@ -2,10 +2,10 @@ import sqlite3
 import json
 
 # This is a json file of every @realDonaldTrump tweet, compiled by TrumpTwitterArchive.com
-with open('realdonaldtrump_long.json') as data_file:
+with open('may_long.json') as data_file:
     data = json.load(data_file)
 
-db = sqlite3.connect('TrumpTweets.db')
+db = sqlite3.connect('MayTweets.db')
 cursor = db.cursor()
 
 # id is the id of every tweet, as assigned by Twitter
